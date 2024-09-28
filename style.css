@@ -18,25 +18,34 @@ margin: 10px;
 
 }
 
-body{
-background-color:rgb(224, 250, 215);
+#head1{
+font-size: 40px;
+margin-top: 50px;
+margin-bottom: 20px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
+
+}
+body{
+background-color:#212529;
+color:white;
 
 
 }
 
 button{
 margin-right: 30px;
-background-color: rgba(96, 255, 183, 0.826);
+background-color:#6D2CF1;
 padding-left: 5px;
 padding-right: 5px;
+color: white;
 }
 
 a{ 
 padding-left: 10px;
-color: rgb(0,0,0);
+color:white;
 text-align: center;
-font-size: 30px;
+font-size: 20px;
 text-decoration: none;
 margin-right: 40px;
 
@@ -44,7 +53,7 @@ margin-right: 40px;
 
 .Searchbar{
     text-align:right;
-    background-color: gray;
+    background-color:#6D2CF1;
     width: 100%;
     height: 60px;
     border-radius: 10%;
@@ -59,6 +68,7 @@ margin-right: 40px;
 input{
 
     margin-bottom: 45px;
+    color: #5320B6;
 }
 
 p{
