@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join Our Facebook Group – Laugh, Learn, Level Up</title>
+  <meta name="description" content="A vibrant Facebook community sharing funny, political, religious, and diverse content that helps people level up their social skills." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: 14 14 18;
+      --surface: 24 24 32;
+      --text: 240 240 248;
+      --muted: 180 180 200;
+      --brand1: 99 102 241; /* indigo */
+      --brand2: 16 185 129; /* emerald */
+      --accent: 255 90 151; /* pink */
+      --grad: linear-gradient(135deg, rgb(var(--brand1)) 0%, rgb(var(--accent)) 50%, rgb(var(--brand2)) 100%);
+      --radius-2xl: 1.25rem;
+      --shadow-soft: 0 10px 30px rgba(0,0,0,.35);
+      --shadow-glow: 0 10px 40px rgba(99,102,241,.35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: rgb(var(--text)); background: rgb(var(--bg));
+      overflow-x: hidden;
+    }
+    a{ color: inherit; text-decoration: none; }
+    img{ max-width: 100%; display: block; }
+
+    /* Scroll progress bar */
+    .progress { position: fixed; inset: 0 0 auto 0; height: 4px; background: rgb(var(--brand1)); transform-origin: 0 50%; transform: scaleX(0); z-index: 1000; }
+
+    /* Navigation */
+    .nav{
+      position: sticky; top: 0; z-index: 999; backdrop-filter: saturate(140%) blur(10px);
+      background: rgba(20,20,30,.6); border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav .wrap{ max-width: 1200px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; padding: .9rem 1rem; }
+    .brand{ display:flex; align-items:center; gap:.75rem; font-weight: 800; letter-spacing: .2px; }
+    .brand .logo{ width:40px; height:40px; border-radius:12px; background: var(--grad); box-shadow: var(--shadow-glow); position:relative; }
+    .brand span{ font-family: Nunito, Inter, system-ui; font-size: 1.15rem; }
+    .navlinks{ display:flex; gap:1.25rem; align-items:center; }
+    .navlinks a{ opacity:.9; font-weight:600; }
+    .navlinks a:hover{ opacity:1; }
+    .cta{ padding:.7rem 1rem; background: var(--grad); border-radius: 999px; box-shadow: var(--shadow-glow); font-weight: 800; }
+    .menu-btn{ display:none; width:40px; height:40px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.03); align-items:center; justify-content:center; }
+
+    @media (max-width: 880px){
+      .navlinks{ display:none; }
+      .menu-btn{ display:flex; }
+    }
+
+    /* Mobile menu */
+    .mobile-menu{ position: fixed; inset: 0 0 auto 0; top:64px; background: rgba(12,12,16,.95); border-top: 1px solid rgba(255,255,255,.06); display:none; }
+    .mobile-menu.open{ display:block; }
+    .mobile-menu a{ display:block; padding:1rem 1.25rem; border-bottom:1px solid rgba(255,255,255,.06); font-weight:600; }
+
+    /* Hero */
+    .hero{ position:relative; }
+    .hero .wrap{ max-width: 1200px; margin: 0 auto; padding: 5rem 1rem 3rem; display:grid; grid-template-columns: 1.2fr 1fr; gap:2rem; align-items:center; }
+    @media (max-width: 980px){ .hero .wrap{ grid-template-columns: 1fr; padding-top: 3.75rem; } }
+    h1{ font-size: clamp(2rem, 3.8vw, 3.2rem); line-height:1.05; margin: 0 0 1rem; font-weight: 900; letter-spacing: .2px; }
+    .lead{ font-size: clamp(1rem, 1.6vw, 1.2rem); color: rgb(var(--muted)); margin-bottom:1.5rem; }
+    .hero-cta{ display:flex; gap:.8rem; align-items:center; flex-wrap: wrap; }
+    .btn{ padding:.9rem 1.15rem; border-radius: 14px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.04); font-weight: 700; }
+    .btn.primary{ background: var(--grad); border:0; box-shadow: var(--shadow-glow); }
+    .mini{ font-size:.85rem; opacity:.8; }
+
+    .hero-art{ position:relative; aspect-ratio: 4/3; border-radius: var(--radius-2xl); overflow:hidden; background: radial-gradient(1200px 800px at 10% 10%, rgba(99,102,241,.25), transparent 60%), radial-gradient(1000px 700px at 90% 30%, rgba(16,185,129,.22), transparent 60%); box-shadow: var(--shadow-soft); }
+    .blob{ position:absolute; width: 420px; height: 420px; border-radius: 50%; filter: blur(60px); opacity:.45; mix-blend-mode: screen; }
+    .b1{ background: rgba(99,102,241,.8); top:-60px; left:-100px; animation: float 9s ease-in-out infinite; }
+    .b2{ background: rgba(16,185,129,.8); bottom:-100px; right:-120px; animation: float 12s ease-in-out infinite reverse; }
+    .b3{ background: rgba(255,90,151,.65); top:20%; left:60%; animation: float 15s ease-in-out infinite; }
+    .device{ position:absolute; inset: 10% 8% 12% 8%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 22px; box-shadow: var(--shadow-soft); overflow:hidden; }
+    .device .bar{ display:flex; gap:.4rem; padding:.6rem .8rem; border-bottom:1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.03); }
+    .dot{ width:10px; height:10px; border-radius:50%; background:#ff5f57; }
+    .dot:nth-child(2){ background:#febc2e; }
+    .dot:nth-child(3){ background:#28c840; }
+    .timeline{ height:100%; overflow:auto; scroll-behavior:smooth; scroll-snap-type: y mandatory; }
+    .post{ scroll-snap-align:start; padding:1rem; border-bottom:1px solid rgba(255,255,255,.06); display:grid; grid-template-columns: 48px 1fr; gap:.9rem; align-items:start; }
+    .avatar{ width:48px; height:48px; border-radius:12px; background: var(--grad); box-shadow: var(--shadow-glow); }
+    .post h4{ margin:.1rem 0 .35rem; font-size:1rem; }
+    .post p{ margin:0; color:rgb(var(--muted)); font-size:.95rem; }
+
+    @keyframes float{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-14px) } }
+
+    /* Feature badges */
+    .badges{ display:flex; flex-wrap:wrap; gap:.6rem; margin: 1rem 0 0; }
+    .badge{ padding:.5rem .7rem; border-radius: 999px; border:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); font-size:.85rem; }
+
+    /* Stats */
+    .stats{ max-width:1200px; margin: 2rem auto 0; padding: 0 1rem; display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem; }
+    .stat{ padding:1.35rem; border-radius: 16px; background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); text-align:center; box-shadow: var(--shadow-soft); }
+    .stat .num{ font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; }
+    .stat .label{ color: rgb(var(--muted)); font-weight:600; letter-spacing:.3px; }
+    @media (max-width: 880px){ .stats{ grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 520px){ .stats{ grid-template-columns: 1fr; } }
+
+    /* Section */
+    section{ padding: 4rem 1rem; }
+    .wrap{ max-width: 1200px; margin: 0 auto; }
+    .section-head{ display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom:1.6rem; }
+    .section-head h2{ margin:0; font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+    .section-head p{ margin:0; color: rgb(var(--muted)); }
+
+    /* Categories filter grid */
+    .filters{ display:flex; gap:.6rem; flex-wrap:wrap; }
+    .chip{ padding:.6rem .9rem; border-radius:999px; border:1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.03); font-weight:700; cursor:pointer; user-select:none; }
+    .chip.active{ background: var(--grad); border:0; box-shadow: var(--shadow-glow); }
+
+    .grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top:1rem; }
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 620px){ .grid{ grid-template-columns: 1fr;} }
+    .card{ position:relative; overflow:hidden; border-radius: 18px; border:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); box-shadow: var(--shadow-soft); transition:.25s ease; }
+    .card:hover{ transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.45); }
+    .card .cover{ aspect-ratio: 16/9; background: radial-gradient(400px 280px at 20% 20%, rgba(99,102,241,.3), transparent 50%), radial-gradient(380px 260px at 80% 30%, rgba(16,185,129,.25), transparent 55%); }
+    .card .content{ padding: 1rem; }
+    .tag{ font-size:.78rem; opacity:.8; padding:.25rem .5rem; border:1px solid rgba(255,255,255,.1); border-radius:999px; display:inline-block; }
+    .title{ font-weight:800; margin: .7rem 0 .3rem; }
+    .desc{ color: rgb(var(--muted)); margin:0; }
+
+    /* Testimonials */
+    .slider{ display:grid; gap:1rem; }
+    .track{ display:flex; gap:1rem; overflow:auto; scroll-snap-type: x mandatory; padding-bottom:.5rem; }
+    .quote{ min-width: 340px; scroll-snap-align:center; padding:1.25rem; border:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); border-radius: 16px; box-shadow: var(--shadow-soft);
+      display:grid; grid-template-columns: 48px 1fr; gap:.8rem; align-items:start; }
+    .quote .avatar{ grid-row: span 2; }
+    .quote p{ margin:.2rem 0; color: rgb(var(--muted)); }
+    .slider-controls{ display:flex; gap:.6rem; }
+    .arrow{ width:42px; height:42px; border-radius: 12px; border:1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); display:flex; align-items:center; justify-content:center; cursor:pointer; }
+
+    /* FAQ */
+    .faq{ display:grid; gap: .8rem; }
+    .faq details{ border:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); border-radius: 16px; padding: .8rem 1rem; }
+    .faq summary{ cursor:pointer; font-weight:800; }
+    .faq p{ color: rgb(var(--muted)); }
+
+    /* CTA section */
+    .cta-section{ position:relative; overflow:hidden; border-radius: 22px; background: radial-gradient(1000px 600px at 10% 50%, rgba(99,102,241,.25), transparent 60%), radial-gradient(800px 520px at 90% 40%, rgba(16,185,129,.25), transparent 60%), rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); box-shadow: var(--shadow-soft); }
+    .cta-section .wrap{ padding: 3rem 1.25rem; display:grid; grid-template-columns: 1.3fr .7fr; gap:1rem; align-items:center; }
+    @media (max-width: 880px){ .cta-section .wrap{ grid-template-columns: 1fr; } }
+
+    /* Footer */
+    footer{ border-top:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.02); }
+    .foot{ max-width:1200px; margin:0 auto; padding: 2rem 1rem; display:grid; grid-template-columns: 1.2fr .8fr; gap:1rem; }
+    @media (max-width: 880px){ .foot{ grid-template-columns: 1fr; } }
+    .socials{ display:flex; gap:.8rem; }
+    .icon{ width:40px; height:40px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); display:flex; align-items:center; justify-content:center; }
+
+    /* Utilities */
+    .reveal{ opacity:0; transform: translateY(10px); transition: .6s ease; }
+    .reveal.visible{ opacity:1; transform: none; }
+    .muted{ color: rgb(var(--muted)); }
+
+    /* Floating Join button */
+    .float-join{ position: fixed; right: 16px; bottom: 16px; z-index: 900; }
+    .pulse{ position: relative; }
+    .pulse::after{ content:""; position:absolute; inset:-8px; border-radius:999px; border:2px solid rgba(99,102,241,.6); animation: pulse 2.2s ease-out infinite; }
+    @keyframes pulse{ 0%{ transform: scale(.8); opacity:.9 } 100%{ transform: scale(1.6); opacity:0 } }
+
+    /* Back to top */
+    .to-top{ position: fixed; left:16px; bottom:16px; z-index: 900; display:none; }
+    .to-top.show{ display:block; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .b1,.b2,.b3,.pulse::after{ animation: none !important; }
+      html{ scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap">
+      <a href="#home" class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>M-K-J FB Group</span>
+      </a>
+      <div class="navlinks" role="menubar">
+        <a role="menuitem" href="#features">Features</a>
+        <a role="menuitem" href="#categories">Categories</a>
+        <a role="menuitem" href="#testimonials">Love from Members</a>
+        <a role="menuitem" href="#faq">FAQ</a>
+        <a class="cta" href="https://facebook.com/groups/462321921383743/" target="_blank" rel="noopener">Join on Facebook</a>
+      </div>
+      <button class="menu-btn" aria-label="Open menu" id="menuBtn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Menu">
+      <a href="#features" onclick="closeMenu()">Features</a>
+      <a href="#categories" onclick="closeMenu()">Categories</a>
+      <a href="#testimonials" onclick="closeMenu()">Love from Members</a>
+      <a href="#faq" onclick="closeMenu()">FAQ</a>
+      <a class="cta" href="https://facebook.com/groups/462321921383743/" target="_blank" rel="noopener" onclick="closeMenu()">Join on Facebook</a>
+    </div>
+  </nav>
+
+  <header id="home" class="hero">
+    <div class="wrap">
+      <div>
+        <h1 class="reveal">A community where <span style="background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;">fun meets debate</span> and everyone levels up.</h1>
+        <p class="lead reveal">We’re a lively Facebook group sharing funny memes, political takes, religious reflections, and all kinds of diverse content from real people. Come for the laughs, stay for the conversations—and grow your social skills along the way.</p>
+        <div class="hero-cta reveal">
+          <a class="btn primary" href="https://facebook.com/groups/462321921383743/" target="_blank" rel="noopener">Join the Group</a>
+          <a class="btn" href="#features">Explore Features</a>
+          <span class="mini">No spam. Just good vibes ✨</span>
+        </div>
+        <div class="badges reveal" aria-label="Highlights">
+          <span class="badge">Moderated & Respectful</span>
+          <span class="badge">Daily Fresh Posts</span>
+          <span class="badge">Zero-cost to Join</span>
+        </div>
+      </div>
+      <div class="hero-art reveal" aria-hidden="true">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+        <div class="device">
+          <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="timeline" id="timeline">
+            <div class="post">
+              <div class="avatar"></div>
+              <h4>Priya Patel • Humor</h4>
+              <p>Just dropped a wholesome meme thread. Warning: uncontrollable giggles 😂</p>
+            </div>
+            <div class="post">
+              <div class="avatar"></div>
+              <h4>Neeraj Awasthi • Discussion</h4>
+              <p>What’s one political idea you changed your mind about—and why?</p>
+            </div>
+            <div class="post">
+              <div class="avatar"></div>
+              <h4>Dinesh singh • Reflections</h4>
+              <p>Sharing a short piece on kindness across faiths. Respectful thoughts welcome.</p>
+            </div>
+            <div class="post">
+              <div class="avatar"></div>
+              <h4> Manish Singh • Social Skills</h4>
+              <p>Quick tip: How to disagree online without being disagreeable ✌️</p>
+            </div>
+            <div class="post">
+              <div class="avatar"></div>
+              <h4>Naveen Sharma • Community</h4>
+              <p>Weekend challenge: Post something that made your day better. Go!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat reveal"><div class="num" data-count="15000">0</div><div class="label">Members & growing</div></div>
+    <div class="stat reveal"><div class="num" data-count="1200">0</div><div class="label">Posts / month</div></div>
+    <div class="stat reveal"><div class="num" data-count="98">0</div><div class="label">% positive interactions</div></div>
+    <div class="stat reveal"><div class="num" data-count="24">0</div><div class="label">/7 active moderators</div></div>
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why you’ll love it here</h2>
+        <p>Thoughtful moderation, diverse content, and tools to help you connect better.</p>
+      </div>
+      <div class="grid">
+        <article class="card reveal">
+          <div class="cover"></div>
+          <div class="content">
+            <span class="tag">Community-first</span>
+            <h3 class="title">Respectful debates</h3>
+            <p class="desc">We encourage different viewpoints while keeping discussions civil, on-topic, and inclusive.</p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="cover"></div>
+          <div class="content">
+            <span class="tag">Skill-building</span>
+            <h3 class="title">Level up your social skills</h3>
+            <p class="desc">Weekly prompts and challenges that nudge you to listen better, share smarter, and connect deeper.</p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="cover"></div>
+          <div class="content">
+            <span class="tag">Curated</span>
+            <h3 class="title">Balanced content mix</h3>
+            <p class="desc">Funny, political, religious, and more—curated for quality, learning, and good vibes.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Explore categories</h2>
+        <div class="filters" role="tablist" aria-label="Content Filters">
+          <span class="chip active" data-filter="all" role="tab" aria-selected="true">All</span>
+          <span class="chip" data-filter="humor" role="tab">Humor</span>
+          <span class="chip" data-filter="politics" role="tab">Politics</span>
+          <span class="chip" data-filter="religion" role="tab">Religion</span>
+          <span class="chip" data-filter="social" role="tab">Social Skills</span>
+        </div>
+      </div>
+      <div class="grid" id="cards">
+        <!-- Example cards -->
+        <article class="card reveal" data-cat="humor">
+          <div class="cover"></div>
+          <div class="content">
+            <span class="tag">Humor</span>
+            <h3 class="title">Meme Monday</h3>
+            <p class="desc">Kick off the week with the funniest community-picked memes.</p>
+          </div>
+        </article>
+        <article class="card reveal" data-cat="politics">
+          <div class="cover"></div>
+          <div class="content">
+            <span class="tag">Politics</span>
+            <h3 class="title">Civics in 60s</h3>
+            <p class="desc">Bite-sized explainers that spark informed, respectful discussion.</p>
+          </div>
+        </article>
+        <article class="card reveal" data-cat="religion">
+          <div class="cover"></div>
+          <div class="content">
+            <span class="tag">Religion</span>
+            <h3 class="title">Common ground</h3>
+            <p class="desc">Short reflections on kindness, gratitude, and shared values.</p>
+          </div>
+        </article>
+        <article class="card reveal" data-cat="social">
+          <div class="cover"></div>
+          <div class="content">
+            <span class="tag">Social Skills</span>
+            <h3 class="title">Debate, not hate</h3>
+            <p class="desc">Practical tips for productive conversations online.</p>
+          </div>
+        </article>
+        <article class="card reveal" data-cat="politics">
+          <div class="cover"></div>
+          <div class="content">
+            <span class="tag">Politics</span>
+            <h3 class="title">Ask-Me-Anything</h3>
+            <p class="desc">AMA threads with guest speakers and seasoned members.</p>
+          </div>
+        </article>
+        <article class="card reveal" data-cat="humor">
+          <div class="cover"></div>
+          <div class="content">
+            <span class="tag">Humor</span>
+            <h3 class="title">Caption contest</h3>
+            <p class="desc">Win bragging rights with the wittiest captions.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Loved by our members</h2>
+        <div class="slider-controls">
+          <button class="arrow" id="prev" aria-label="Previous">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="arrow" id="next" aria-label="Next">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="slider">
+        <div class="track" id="track">
+          <figure class="quote reveal">
+            <div class="avatar"></div>
+            <figcaption>
+              <h4>Sonu Madan</h4>
+              <p>“I joined for the memes and stayed for the community. Debates are actually respectful here!”</p>
+            </figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="avatar"></div>
+            <figcaption>
+              <h4>Bauvan Yadav</h4>
+              <p>“The weekly prompts helped me speak up confidently—online and offline.”</p>
+            </figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="avatar"></div>
+            <figcaption>
+              <h4>Rohan Sonvani</h4>
+              <p>“Love the balance: humor, learning, and a sense of belonging.”</p>
+            </figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="avatar"></div>
+            <figcaption>
+              <h4>Rajat Gupta</h4>
+              <p>“Moderators keep things fair and friendly. Feels safe to share my views.”</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Frequently asked questions</h2>
+        <p>Everything you need to know before you join.</p>
+      </div>
+      <div class="faq">
+        <details class="reveal">
+          <summary>Is the group free to join?</summary>
+          <p>Yes. It’s 100% free. Just click “Join” and answer a few quick questions so we can keep the community high-quality.</p>
+        </details>
+        <details class="reveal">
+          <summary>How do you handle sensitive topics like politics or religion?</summary>
+          <p>We encourage diverse perspectives while enforcing respectful dialogue. Personal attacks, hate speech, and misinformation are moderated.</p>
+        </details>
+        <details class="reveal">
+          <summary>What can I post?</summary>
+          <p>Funny, political, religious, social tips, personal stories—if it’s civil, constructive, and follows the rules, it’s welcome.</p>
+        </details>
+        <details class="reveal">
+          <summary>Can I promote my page or products?</summary>
+          <p>Limited promos on designated threads only. We’re community-first. Please check the group rules after joining.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap cta-section">
+      <div class="wrap">
+        <div>
+          <h2>Ready to jump in?</h2>
+          <p class="muted">Join thousands of people who are laughing, learning, and growing their social confidence daily.</p>
+          <div style="margin-top:1rem; display:flex; gap:.8rem; flex-wrap:wrap;">
+            <a class="btn primary" href="https://facebook.com/groups/462321921383743/" target="_blank" rel="noopener">Join on Facebook</a>
+            <a class="btn" href="#categories">Browse Topics</a>
+          </div>
+        </div>
+        <div>
+          <ul class="muted" style="margin:0; padding-left:1rem;">
+            <li>Respectful discussions across viewpoints</li>
+            <li>Daily fresh content & themed events</li>
+            <li>Beginner-friendly: no posting pressure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <div>
+        <div class="brand" style="margin-bottom:.6rem;">
+          <div class="logo"></div>
+          <span>M-K-J FB Group</span>
+        </div>
+        <p class="muted">A safe, lively space to enjoy humor, exchange ideas on politics and religion, and improve social skills—together.</p>
+        <div class="socials" aria-label="Social links">
+          <a class="icon" href="https://facebook.com/groups/462321921383743/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-2.9h2v-2.2c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2v2h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12"/></svg>
+          </a>
+          <a class="icon" href="#" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <form onsubmit="event.preventDefault(); alert('Thanks! We\'ll ping you with group highlights.');" aria-label="Subscribe form">
+          <label for="email" style="display:block; font-weight:800; margin-bottom:.5rem;">Get highlights in your inbox</label>
+          <div style="display:flex; gap:.5rem;">
+            <input id="email" type="email" placeholder="you@example.com" required style="flex:1; padding:.9rem 1rem; border-radius:14px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color:inherit;" />
+            <button class="btn" type="submit">Notify me</button>
+          </div>
+          <small class="muted">We’ll never share your email. Unsubscribe anytime.</small>
+        </form>
+      </div>
+    </div>
+    <div class="wrap" style="padding: 0 1rem 2rem; color: rgb(var(--muted)); font-size:.9rem;">© <span id="year"></span> M-K-J. All rights reserved.</div>
+  </footer>
+
+  <div class="float-join">
+    <a class="btn primary pulse" href="https://facebook.com/groups/462321921383743/" target="_blank" rel="noopener">Join Now</a>
+  </div>
+
+  <a href="#home" class="btn to-top" id="toTop" aria-label="Back to top">↑ Top</a>
+
+  <script>
+    // Replace with your actual group URL once ready
+    const GROUP_URL = 'https://facebook.com/groups/462321921383743/';
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    function closeMenu(){ mobileMenu.classList.remove('open'); }
+
+    // Scroll progress
+    const progress = document.querySelector('.progress');
+    window.addEventListener('scroll', () => {
+      const sTop = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = `scaleX(${(sTop/height).toFixed(3)})`;
+    }, { passive: true });
+
+    // Auto scroll inside hero timeline
+    const timeline = document.getElementById('timeline');
+    let autoScroll; let dir = 1;
+    function startAutoScroll(){
+      autoScroll = setInterval(() => {
+        const max = timeline.scrollHeight - timeline.clientHeight;
+        if(timeline.scrollTop >= max - 2) dir = -1;
+        if(timeline.scrollTop <= 2) dir = 1;
+        timeline.scrollTop += dir * 1.2;
+      }, 16);
+    }
+    startAutoScroll();
+    timeline.addEventListener('mouseenter', ()=> clearInterval(autoScroll));
+    timeline.addEventListener('mouseleave', startAutoScroll);
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Count-up stats
+    const counters = document.querySelectorAll('.num');
+    const cntObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        const el = entry.target; const target = +el.dataset.count; const dur = 1400; const start = performance.now();
+        const step = (now) => {
+          const p = Math.min((now - start)/dur, 1);
+          const val = Math.floor(target * (1 - Math.pow(1-p, 3))); // easeOutCubic
+          el.textContent = target > 100 ? val.toLocaleString() : val + (target < 30 ? '' : '');
+          if(p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+        cntObs.unobserve(el);
+      });
+    }, { threshold: .5 });
+    counters.forEach(c => cntObs.observe(c));
+
+    // Filter cards
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('#cards .card');
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active')); chip.classList.add('active');
+      const f = chip.dataset.filter;
+      cards.forEach(card => {
+        const show = f === 'all' || card.dataset.cat === f;
+        card.style.display = show ? '' : 'none';
+      });
+    }));
+
+    // Testimonials slider controls
+    const track = document.getElementById('track');
+    document.getElementById('prev').onclick = () => track.scrollBy({ left: -360, behavior: 'smooth' });
+    document.getElementById('next').onclick = () => track.scrollBy({ left: 360, behavior: 'smooth' });
+
+    // Back to top visibility
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      toTop.classList.toggle('show', window.scrollY > 800);
+    }, { passive: true });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Replace all Group links (optional single source of truth)
+    document.querySelectorAll(`a[href="https://facebook.com/groups/yourgroup"]`).forEach(a => a.href = GROUP_URL);
+  </script>
+</body>
+</html>
